@@ -12,8 +12,13 @@
             android:name=".ListaAlunosActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
+        <activity
+            android:name=".FormularioActivity"
+            android:label="@string/title_activity_formulario"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter> <!--Define as instenções do celular para o app-->
+                <action android:name="android.intent.action.MAIN" /> <!--Define que o launcher do android vai usar essa activity como a main quando ele abrir o app-->
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
