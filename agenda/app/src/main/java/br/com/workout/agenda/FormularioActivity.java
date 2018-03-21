@@ -45,6 +45,10 @@ public class FormularioActivity extends AppCompatActivity {
                 Aluno aluno = helper.pegaAluno();
                 Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome().toString() + " salvo!", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
 
+                //conecta com o banco de dados
+                //faz a query inserindo o aluno
+                //fecha a conexão com o banco
+
                 finish(); //Destroi a activity que foi criada
                 break; //quebra a estrutura de case
         }

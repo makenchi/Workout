@@ -19,6 +19,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState); //recupera o comportamento do oncreate que tem no app compat activity
         setContentView(R.layout.activity_lista_alunos); //R é um atalho para a pasta res, do projeto
 
+        //conecta com o banco de dados
+
+        //faz a busca no banco para trazer os alunos
+        //popula o array
+        //fecha a conexão com o banco
+
         //Criando os dados da lista de alunos
         String[] alunos = {"Daniel","Ronald","Cafu","Vinicius Jr"};
 
