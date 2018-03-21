@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.com.workout.agenda.modelo.Aluno;
+
 public class FormularioActivity extends AppCompatActivity {
 
     private FormularioHelper helper;
@@ -40,9 +42,8 @@ public class FormularioActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.menuFormularioOk:
-                Toast.makeText(FormularioActivity.this, "Botao clicado", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
-
-                
+                Aluno aluno = helper.pegaAluno();
+                Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome().toString() + " salvo!", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
 
                 finish(); //Destroi a activity que foi criada
                 break; //quebra a estrutura de case
