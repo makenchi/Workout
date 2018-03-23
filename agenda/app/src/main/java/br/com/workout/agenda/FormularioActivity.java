@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.com.workout.agenda.dao.AlunoDAO;
 import br.com.workout.agenda.modelo.Aluno;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -43,11 +44,12 @@ public class FormularioActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menuFormularioOk:
                 Aluno aluno = helper.pegaAluno();
+                AlunoDAO dao = new AlunoDAO(this);
+                dao.insere(aluno);
+                dao.close();
+
                 Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome().toString() + " salvo!", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
 
-                //conecta com o banco de dados
-                //faz a query inserindo o aluno
-                //fecha a conexão com o banco
 
                 finish(); //Destroi a activity que foi criada
                 break; //quebra a estrutura de case
