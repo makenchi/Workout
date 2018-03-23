@@ -12,6 +12,11 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.List;
+
+import br.com.workout.agenda.dao.AlunoDAO;
+import br.com.workout.agenda.modelo.Aluno;
+
 public class ListaAlunosActivity extends AppCompatActivity {
 
     @Override
@@ -19,20 +24,14 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState); //recupera o comportamento do oncreate que tem no app compat activity
         setContentView(R.layout.activity_lista_alunos); //R é um atalho para a pasta res, do projeto
 
-        //conecta com o banco de dados
-
-        //faz a busca no banco para trazer os alunos
-        //popula o array
-        //fecha a conexão com o banco
-
-        //Criando os dados da lista de alunos
-        String[] alunos = {"Daniel","Ronald","Cafu","Vinicius Jr"};
+        AlunoDAO dao = new AlunoDAO(this);
+        List<Aluno> alunos =  dao.buscaAlunos();
 
         //Procuro o objeto do xml pelo id
         ListView listaAlunos = (ListView) findViewById(R.id.Lista_Alunos);
 
         //Adcionando os alunos na listview
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alunos);
+        ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunos);
 
         //Escolhendo o adptador para a view
         listaAlunos.setAdapter(adapter);
