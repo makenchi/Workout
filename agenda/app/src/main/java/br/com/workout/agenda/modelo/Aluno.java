@@ -59,4 +59,9 @@ public class Aluno {
     public void setSite(String site) {
         this.site = site;
     }
+
+    @Override
+    public String toString() {
+        return getId() + " - " + getNome();
+    }
 }

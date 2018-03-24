@@ -26,6 +26,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         AlunoDAO dao = new AlunoDAO(this);
         List<Aluno> alunos =  dao.buscaAlunos();
+        dao.close();
 
         //Procuro o objeto do xml pelo id
         ListView listaAlunos = (ListView) findViewById(R.id.Lista_Alunos);
