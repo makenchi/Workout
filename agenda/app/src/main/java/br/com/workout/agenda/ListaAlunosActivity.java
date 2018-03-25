@@ -24,6 +24,20 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState); //recupera o comportamento do oncreate que tem no app compat activity
         setContentView(R.layout.activity_lista_alunos); //R é um atalho para a pasta res, do projeto
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.lista_novoAluno);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentVaiProForm = new Intent(ListaAlunosActivity.this, FormularioActivity.class); //Cria a intenção de mudar de activity
+                startActivity(intentVaiProForm); //Pede para o android executar a intenção criada anteriormente
+            }
+        });
+    }
+
+    private void carregaLista() {
         AlunoDAO dao = new AlunoDAO(this);
         List<Aluno> alunos =  dao.buscaAlunos();
         dao.close();
@@ -36,17 +50,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         //Escolhendo o adptador para a view
         listaAlunos.setAdapter(adapter);
+    }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.lista_novoAluno);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentVaiProForm = new Intent(ListaAlunosActivity.this, FormularioActivity.class); //Cria a intenção de mudar de activity
-                startActivity(intentVaiProForm); //Pede para o android executar a intenção criada anteriormente
-            }
-        });
+    @Override
+    protected void onResume() {
+        //Faz a lista ser carregada no on resume para que ela seja sempre carregada de acordo com o fluxograma de cilclo de vida de activitys
+        super.onResume();
+        carregaLista();
     }
 }
