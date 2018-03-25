@@ -32,6 +32,16 @@ public class ListaAlunosActivity extends AppCompatActivity {
         //Procuro o objeto do xml pelo id
         listaAlunos = (ListView) findViewById(R.id.Lista_Alunos);
 
+        listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> lista, View item, int position, long id) {
+                Aluno aluno = (Aluno) listaAlunos.getItemAtPosition(position);
+                Intent intentVaiProForm = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+                intentVaiProForm.putExtra("aluno", aluno);
+                startActivity(intentVaiProForm);
+            }
+        });
+
         registerForContextMenu(listaAlunos);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

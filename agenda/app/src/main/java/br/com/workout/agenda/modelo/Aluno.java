@@ -1,10 +1,12 @@
 package br.com.workout.agenda.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by Makenchi on 21/03/2018.
  */
 
-public class Aluno {
+public class Aluno implements Serializable{
     private Long id;
     private String nome;
     private String endereco;

@@ -29,6 +29,13 @@ public class FormularioActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         helper = new FormularioHelper(this);
+
+        Intent intent = getIntent();
+        Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
+
+        if (aluno != null){
+            helper.preencheForm(aluno);
+        }
     }
 
     @Override
@@ -45,7 +52,15 @@ public class FormularioActivity extends AppCompatActivity {
             case R.id.menuFormularioOk:
                 Aluno aluno = helper.pegaAluno();
                 AlunoDAO dao = new AlunoDAO(this);
-                dao.insere(aluno);
+
+                //Verifico se é um novo aluno ou se é um aluno para ser editado
+                if (aluno.getId() != null){
+                    dao.edita(aluno);
+                }
+                else {
+                    dao.insere(aluno);
+                }
+
                 dao.close();
 
                 Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome().toString() + " salvo!", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
