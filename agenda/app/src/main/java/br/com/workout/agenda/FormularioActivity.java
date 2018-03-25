@@ -65,7 +65,6 @@ public class FormularioActivity extends AppCompatActivity {
 
                 Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome().toString() + " salvo!", Toast.LENGTH_SHORT).show(); //ele espera a view alvo para aparecer o toast, valor do texto que vai aparecer, e tempo de duração do toast. por fim o .show é para ele aparecer
 
-
                 finish(); //Destroi a activity que foi criada
                 break; //quebra a estrutura de case
         }
